@@ -1,52 +1,26 @@
 import React, { Component } from 'react'
-import {StyleSheet, TouchableOpacity, Text, View, TouchableWithoutFeedback, Image} from 'react-native'
-import Mc from './assets/mc.png'
-import Segunda from './assets/segunda.png'
-import Terceira from './assets/Terceira.png'
+import Principal from './Principal'
+import 'react-native-gesture-handler';
+import{NavigationContainer} from '@react-navigation/native';
+import{createStackNavigator} from '@react-navigation/stack'
+import Menu from './Menu'
 
+
+const Stack = createStackNavigator();
 
 function App () {
       return(
         <>
-      <View>
-        <Image source={Mc} style={styles.Image}/> 
-        </View>
-        <View style={styles.container}>
-        <Image source={Segunda} style={styles.Image1}/>
-        </View>
-        <View style={styles.container}>
-        <Image source={Terceira} style={styles.Image2}/>
-      </View>
+        <NavigationContainer>
+      <Stack.Navigator  headerMode="none">
+      <Stack.Screen name="Principal" component={Principal} options={{tabBarVisible: false}}/>
+        <Stack.Screen name="Menu" component={Menu} options={{tabBarVisible: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
     </>
-      )
+  )
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'red',
-  },
-
-  Image:{
-    width: '100%',
-    height: 45,
-},
-
- Image1:{
-  width: '100%',
-  height: '100%',
-
- },
-
- Image2:{
-  width: '100%',
-  height: '99%',
-  backgroundColor: 'red',
-
- }
-})
 
 export default App;
